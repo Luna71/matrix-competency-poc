@@ -6,7 +6,7 @@ import { useState } from "react";
 import { Outlet } from "react-router-dom";
 
 export default function Layout() {
-  const [isSideBarOpen, setIsSideBarOpen] = useState(true);
+  const [isSideBarOpen, setIsSideBarOpen] = useState(false);
   return (
     <Box sx={{ flexGrow: 1 }}>
       <NavBar

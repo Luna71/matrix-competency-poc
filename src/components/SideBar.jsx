@@ -69,6 +69,7 @@ function SideBar({ isSideBarOpen, setIsSideBarOpen }) {
                 marginBottom="5px"
                 variant="h6"
                 fontWeight=""
+                key={link.text}
               >
                 {link.text}
               </Typography>

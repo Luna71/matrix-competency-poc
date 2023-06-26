@@ -5,7 +5,7 @@ import React from "react";
 function NavBar({ isSideBarOpen, setIsSideBarOpen }) {
   return (
     <AppBar
-      position="static"
+      position="relative"
       sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}
     >
       <Toolbar>

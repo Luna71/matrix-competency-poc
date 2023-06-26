@@ -1,0 +1,59 @@
+{
+    "Junior Software Engineer (P1)": {},
+    "Software Engineer (P2)": {
+        "Role Summary": [
+            "Develop software to meet user needs",
+            "Follow best-practice guidelines and help to improve those guidelines",
+            "Write clean, secure and well-tested code",
+            "Coach and mentor more junior colleagues",
+            "Be an established, productive, professional contributor",
+            "Can completely lead small projects or tasks through various stages of the software lifecycle",
+            "Has advanced knowledge of the system. Problems faced are difficult and sometimes complex",
+            "Works autonomously with limited supervision",
+            "Reviews the work of other colleagues",
+            "Influences others regarding policies, practices and procedures",
+            "If clearances allow, operate the services they build and identify issues in production"
+        ],
+        "Code & Build": [
+            "Collaborate with others when necessary to review requirements/user stories and use these agreed specifications to design, code, test and document programs or scripts of medium to high complexity using the right standards and tools"
+        ],
+        "Information Security": [
+            "Designs solutions and services with security control embedded, specifically engineered as mitigation against security threats as a core part of the solutions and services, under the direction of technical lead or more senior engineers"
+        ],
+        "Modern Standards Approach": [
+            "Can competently use a modern standards approach and guide others in so doing"
+        ],
+        "Systems Design": [
+            "Documents work using required standards, methods and tools, including prototyping tools where appropriate",
+            "Designs sub-systems or components characterised by managed levels of risk, manageable business and technical complexity, and meaningful impact",
+            "As part of the design process identifies appropriate patterns to use"
+        ],
+        "Systems Integration": [
+            "Can build and test simple interfaces between systems, or work on more complex integration as part of a wider team"
+        ],
+        "Development Process Optimisation": [
+            "Explains the importance of developing process efficiency and the common ways in which processes are optimised",
+            "Supports specific activities to improve development processes"
+        ],
+        "User Focus": [
+            "Prioritises and defines the approach to understand the user story, guiding others in doing so"
+        ],
+        "Organisational Impact": [
+            "Works to achieve day-to-day objectives with key impacts on operational results within the system",
+            "May be accountable for small projects or processes within area of responsibility"
+        ],
+        "Problem Solving & Complexity": [
+            "Problems and issues faced are general, and may require understanding of broader set of issues, and are sometimes complex",
+            "Problems typically involve consideration of multiple issues, systems of specialties",
+            "Problems are typically solved through drwaing from prior experience and analysis of issues",
+            "Responsible for making moderate improvements of processes, systems or products to enhance performance of the system"
+        ],
+        "Communication & Influence": [
+            "Communicates with parties within and outside of own immediate team",
+            "May have responsibility for communicating with parties external to the organization (e.g. customers)"
+        ],
+        "Knowledge & Experience": [
+            "Broadening knowledge of system"
+        ]
+    }
+}
