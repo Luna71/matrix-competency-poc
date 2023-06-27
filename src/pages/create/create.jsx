@@ -1,5 +1,5 @@
 import { Accordion, AccordionDetails, AccordionSummary, Box, Button, Divider, Grid, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Paper, Table, Tooltip, Typography } from "@mui/material";
-import React from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { Form } from "react-router-dom/dist";
 import Competencies from "data/EngineerCompetencies.json"
 import { CheckBox, CommentOutlined } from "@mui/icons-material";
@@ -7,13 +7,19 @@ import { CheckBox, CommentOutlined } from "@mui/icons-material";
 const redColor = "#ff000080"
 const greenColor = "#2cff0080"
 const yellowColor = "#ffd700d6"
-function getRandomColor() {
-  const num = Math.ceil(Math.random() * 3);
-  return num == 1 ? redColor : num == 2 ? greenColor : yellowColor;
+
+function getCheckColor(num) {
+  return num == 0 ? redColor : num == 1 ? yellowColor : greenColor;
 }
 
 function Create() {
-  const competency = Competencies["Software Engineer (P2)"];
+  const competency = useMemo(() => {
+    return Competencies["Software Engineer (P2)"];
+  }, []) ;
+
+  const [competencyValues, setCompetencyValues] = useState(competency.map((category) => {
+    return [category[0], category[1].map(competency => [competency, 0])];
+  }))
 
   return ( 
     <Box width="100%" height="100vh">
@@ -30,36 +36,54 @@ function Create() {
             <Typography variant="h4">Create skills matrix</Typography>
             <Divider sx={{margin: "10px"}} />
             <Typography variant="h5" marginBottom="10px">Software Engineer (P2)</Typography>
+            
+            {competencyValues.map((category, categoryIndex) => {
+              const key = category[0];
+              const values = category[1];
+              
+              const sum = values.flatMap(competency => competency[1]).reduce((accumulator, current) => accumulator + current, 0);
+              const allGreen = sum == values.length * 2;
+              const allRed = sum == 0;
 
-            {Object.keys(competency).map((key) => {
               return (
-              <Box textAlign="left" >
+              <Box textAlign="left" key={key}>
                 <Accordion>
-                  <AccordionSummary sx={{backgroundColor: redColor}}>
-                    <Typography variant="body1" key={key}>{key}</Typography>
+                  <AccordionSummary sx={{backgroundColor: allGreen ? greenColor : allRed ? redColor : yellowColor}}>
+                    <Typography variant="body1">{key}</Typography>
                   </AccordionSummary>
                   <AccordionDetails>
                     <List>
-                    {competency[key].map((competencyText) => {
+                    {values.map((competency, competencyIndex) => {
+                      const competencyText = competency[0];
+                      const competencyValue = competency[1];
                       return <ListItem key={competencyText}>
-                        <ListItemButton>
+                        
                         <ListItemText primary={competencyText}/>
 
                         <Tooltip title="Evidence">
-                          <ListItemIcon sx={{marginLeft: "10px"}}>
-                            <CommentOutlined />
-                          </ListItemIcon>
+                            <ListItemIcon sx={{marginLeft: "10px"}}>
+                              <ListItemButton>
+                                <CommentOutlined />
+                              </ListItemButton>
+                            </ListItemIcon>
                         </Tooltip>
 
-                        <Tooltip title="Progress">
                           <ListItemIcon>
-                            <CheckBox 
-                              checked={true}
-                              sx={{color: getRandomColor() }}
-                            />
+                            <ListItemButton
+                              onClick={() => {
+                                setCompetencyValues((prev) => {
+                                  const newCompetencyValues = [...prev];
+                                  newCompetencyValues[categoryIndex][1][competencyIndex][1] = (newCompetencyValues[categoryIndex][1][competencyIndex][1] + 1) % 3
+                                  return newCompetencyValues;
+                                })
+                              }}>
+                              <CheckBox 
+                                checked={true}
+                                sx={{color: getCheckColor(competencyValue) }}
+                              />
+                            </ListItemButton>
                           </ListItemIcon> 
-                        </Tooltip>
-                        </ListItemButton>
+                                                  
                       </ListItem>
                     })}
                     </List>
