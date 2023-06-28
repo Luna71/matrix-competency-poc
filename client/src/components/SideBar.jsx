@@ -12,33 +12,32 @@ import {
 import React from "react";
 import CreateIcon from "@mui/icons-material/Add";
 import PersonIcon from "@mui/icons-material/Person";
+import { InsertCommentOutlined } from "@mui/icons-material";
+import { useNavigate } from "react-router";
 const drawerWidth = 240;
 const links = [
   {
-    text: "Matrix",
+    text: "User",
   },
-
+  {
+    text: "Profile",
+    icon: <PersonIcon />,
+    link: "/profile",
+  },
   {
     text: "Create Matrix",
     icon: <CreateIcon />,
     link: "/create",
   },
   {
-    text: "Logins",
-  },
-  {
-    text: "Employee",
-    icon: <PersonIcon />,
-    link: "/employee",
-  },
-  {
-    text: "Manager",
-    icon: <PersonIcon />,
-    link: "/manager",
-  },
+    text: "Review Matrix",
+    icon: <InsertCommentOutlined />,
+    link: "/review",
+  }
 ];
 
 function SideBar({ isSideBarOpen, setIsSideBarOpen }) {
+  const navigate = useNavigate();
   return (
     <Drawer
       variant="persistent"
@@ -58,7 +57,7 @@ function SideBar({ isSideBarOpen, setIsSideBarOpen }) {
           {links.map((link) => {
             return link.link ? (
               <ListItem key={link.text}>
-                <ListItemButton>
+                <ListItemButton onClick={() => navigate(link.link)}>
                   <ListItemIcon>{link.icon}</ListItemIcon>
                   <ListItemText primary={link.text} />
                 </ListItemButton>
