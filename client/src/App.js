@@ -7,6 +7,7 @@ import "./App.css";
 import { CssBaseline, ThemeProvider, createTheme } from "@mui/material";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import { Provider } from "react-redux";
+import ReviewSubmission from "pages/review/reviewSubmission";
 
 const darkTheme = createTheme({
   palette: {
@@ -26,6 +27,7 @@ function App() {
               <Route path="/profile" element={<Profile />} />
               <Route path="/create" element={<Create />} />
               <Route path="/review" element={<Review />} />
+              <Route path="/review/submission" element={<ReviewSubmission />} />
             </Route>
           </Routes>
         </ThemeProvider>

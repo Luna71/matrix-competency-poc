@@ -14,6 +14,10 @@ import CreateIcon from "@mui/icons-material/Add";
 import PersonIcon from "@mui/icons-material/Person";
 import { InsertCommentOutlined } from "@mui/icons-material";
 import { useNavigate } from "react-router";
+import {
+  useGetConfirmedSubmissionQuery,
+  useGetSubmissionQuery,
+} from "api/submissionSlice";
 const drawerWidth = 240;
 const links = [
   {
@@ -33,11 +37,14 @@ const links = [
     text: "Review Matrix",
     icon: <InsertCommentOutlined />,
     link: "/review",
-  }
+  },
 ];
 
 function SideBar({ isSideBarOpen, setIsSideBarOpen }) {
   const navigate = useNavigate();
+  const getConfirmedSubmission = useGetConfirmedSubmissionQuery();
+  const getSubmission = useGetSubmissionQuery();
+
   return (
     <Drawer
       variant="persistent"
@@ -57,7 +64,13 @@ function SideBar({ isSideBarOpen, setIsSideBarOpen }) {
           {links.map((link) => {
             return link.link ? (
               <ListItem key={link.text}>
-                <ListItemButton onClick={() => navigate(link.link)}>
+                <ListItemButton
+                  onClick={() => {
+                    navigate(link.link);
+                    getConfirmedSubmission.refetch();
+                    getSubmission.refetch();
+                  }}
+                >
                   <ListItemIcon>{link.icon}</ListItemIcon>
                   <ListItemText primary={link.text} />
                 </ListItemButton>
